@@ -30,7 +30,7 @@ def main():
 
 def extract(image):
     yolov4_cfg = "model/large_yolov4_custom.cfg"
-    trained_model = "model/11.5k_iter_yolov4_custom_last.weights"
+    trained_model = "model/yolov4-custom_last.weights"
     net = cv2.dnn.readNetFromDarknet(yolov4_cfg, trained_model)
 
     classes = ['0','1','2','3','4','5','6','7','8','9','+','-','*','/','%']
