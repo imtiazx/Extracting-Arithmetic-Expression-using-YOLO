@@ -12,7 +12,7 @@ with open("custom.css") as f:
 def main():
     st.title("**Extract and Calculate Arithmetic Expression**")
     file_uploaded = st.file_uploader("Choose file", type = ["png", "jpeg", "jpg", "webp"])
-    st.write("Download sample images from this [dataset](https://github.com/imtiazx/Extracting-Arithmetic-Expression-using-YOLO/tree/main/dataset)".)
+    st.write("Download sample images from this [dataset](https://github.com/imtiazx/Extracting-Arithmetic-Expression-using-YOLO/tree/main/dataset).")
     class_btn = st.button("Extract")  
 
     if file_uploaded is not None:
