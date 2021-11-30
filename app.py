@@ -6,46 +6,44 @@ import matplotlib.pyplot as plt
 import numpy as np
 import time
 
+with open("custom.css") as f:
+    st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+
 def main():
+    st.title("**Extract and Calculate Arithmetic Expression**")
     file_uploaded = st.file_uploader("Choose file", type = ["png", "jpeg", "jpg", "webp"])
-    class_btn = st.button("Extract!")
+
     if file_uploaded is not None:
         image = Image.open(file_uploaded)
         image = np.array(image)
-        print(image.shape)
-        st.image(image, caption = "Uploaded Image", use_column_width = True)
+        st.write("Original Image")
+        st.image(image, use_column_width = True) #parameter: caption = "Uploaded Image" to write it below the uploaded image
+
+    class_btn = st.button("Extract")    
 
     if class_btn:
         if file_uploaded is None:
             st.write("Invalid file type, please upload an image.")
 
         else:
-            with st.spinner("Model working..."):
+            with st.spinner("Model is working..."):
                 plt.imshow(image)
                 plt.axis("off")
-                # prediction = extract(image)
                 time.sleep(1)
-                st.success("Extracted!")
+                st.success("See the result below.")
                 st.write(extract(image))
 
-def extract(image):
+def extract(img):
     yolov4_cfg = "model/large_yolov4_custom.cfg"
     trained_model = "model/yolov4-custom_last.weights"
     net = cv2.dnn.readNetFromDarknet(yolov4_cfg, trained_model)
 
     classes = ['0','1','2','3','4','5','6','7','8','9','+','-','*','/','%']
-    print("xyz")
-    # img = cv2.imread(image)
-    img = image
-    print(img.shape)
     hight,width,_ = img.shape
-    print(img.shape)
+    
     blob = cv2.dnn.blobFromImage(img, 1/255,(416,416),(0,0,0),swapRB = True,crop= False)
-
     net.setInput(blob)
-
-    output_layers_name = net.getUnconnectedOutLayersNames()
-
+    output_layers_name = net.getUnconnectedOutLayersNames() 
     layerOutputs = net.forward(output_layers_name)
 
     boxes =[]
@@ -56,8 +54,8 @@ def extract(image):
         for detection in output:
             score = detection[5:]
             class_id = np.argmax(score)
-
             confidence = score[class_id]            
+            
             if confidence > 0.4:
                 center_x = int(detection[0] * width)
                 center_y = int(detection[1] * hight)
@@ -72,7 +70,6 @@ def extract(image):
 
 
     indexes = cv2.dnn.NMSBoxes(boxes,confidences,.5,.4)
-
     font = cv2.FONT_HERSHEY_PLAIN
     colors = np.random.uniform(0,255,size =(len(boxes),3))
 
@@ -82,7 +79,6 @@ def extract(image):
         for i in indexes.flatten():
             x,y,w,h = boxes[i]
             label = str(classes[class_ids[i]])
-            
             confidence = str(round(confidences[i],2))
             color = colors[i]
             cv2.rectangle(img,(x,y),(x+w,y+h),color,2)
@@ -90,17 +86,13 @@ def extract(image):
             L.append(label)
             X.append(x)
 
-    # print(L)
-    # print(X)
-
     zipped = zip(X, L)
     sorted_zipped = sorted(zipped)
     sorted_list = [element for _, element in sorted_zipped]
-    # print(sorted_list)
-    Answer = ''.join(sorted_list)
-    return f'The algebraic expression is: {Answer}\n\
-    The value of the expression is: {str(eval(Answer))}'
     
+    Answer = ''.join(sorted_list)
+    return f'The arithmetic expression is: {Answer}.\n\
+    The value of the expression is: {str(round(eval(Answer), 2))}'
 
 if __name__ == "__main__":
     main()
