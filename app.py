@@ -12,14 +12,13 @@ with open("custom.css") as f:
 def main():
     st.title("**Extract and Calculate Arithmetic Expression**")
     file_uploaded = st.file_uploader("Choose file", type = ["png", "jpeg", "jpg", "webp"])
+    class_btn = st.button("Extract")  
 
     if file_uploaded is not None:
         image = Image.open(file_uploaded)
         image = np.array(image)
-        st.write("Original Image")
-        st.image(image, use_column_width = True) #parameter: caption = "Uploaded Image" to write it below the uploaded image
-
-    class_btn = st.button("Extract")    
+        st.write("Sample Image")
+        st.image(image, use_column_width = True) #parameter: caption = "Uploaded Image" to write it below the uploaded image  
 
     if class_btn:
         if file_uploaded is None:
