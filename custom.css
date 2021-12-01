@@ -20,7 +20,7 @@ body {
 ----------------------
 */
 h1{
-    color: white;
+    color: greeen;
     text-align: center;
   }
   h3{
@@ -56,6 +56,6 @@ h1{
     text-align: center;
   }
   .stTextInput > div > div > input {
-    color: white;
+    color: green;
   }
   
