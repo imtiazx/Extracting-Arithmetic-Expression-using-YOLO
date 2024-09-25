@@ -1,7 +1,5 @@
 # Extracting-Arithmetic-Expression-using-YOLO
 
-You can try the application [here](https://share.streamlit.io/imtiazx/extracting-arithmetic-expression-using-yolo/main/app.py).
-
 ## Overview
 This project was part of an in-house [hackathon](https://www.kaggle.com/competitions/computer-vision-1/overview) hosted by Bridgei2i, where it won first prize worth ₹50,000 INR. The challenge involved building a solution that utilizes computer vision techniques to analyze images containing arithmetic expressions and correctly identify each digit and symbol in the correct sequence. The solution was evaluated on the basis of Levenshtein distance for accuracy.
 
@@ -26,13 +24,13 @@ This repository contains the following files and folders:
 ## Instructions to Run
 1. Clone the repository:
    ```bash
-   git clone https://github.com/imtiazx/Extracting-Arithmetic-Expression-using-YOLO.git```
+   git clone https://github.com/imtiazx/Extracting-Arithmetic-Expression-using-YOLO.git
 2. Navigate to the repository folder:
    ```bash
-   cd your-repo-name```
+   cd your-repo-name
 3. pip install -r requirements.txt
    ```bash
-   pip install -r requirements.txt```
+   pip install -r requirements.txt
 4. Run the Streamlit app:
    ```bash
-   streamlit run app.py```
+   streamlit run app.py
