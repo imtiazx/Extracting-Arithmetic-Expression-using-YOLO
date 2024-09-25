@@ -1,7 +1,7 @@
 # Extracting-Arithmetic-Expression-using-YOLO
 
 ## Overview
-This project was part of an in-house [hackathon](https://www.kaggle.com/competitions/computer-vision-1/overview) hosted by Bridgei2i, where it won first prize worth ₹50,000 INR. The challenge involved building a solution that utilizes computer vision techniques to analyze images containing arithmetic expressions and correctly identify each digit and symbol in the correct sequence. The solution was evaluated on the basis of Levenshtein distance for accuracy.
+This project was part of an in-house [hackathon on Kaggle](https://www.kaggle.com/competitions/computer-vision-1/overview) hosted by Bridgei2i, where it won first prize worth ₹50,000 INR. The challenge involved building a solution that utilizes computer vision techniques to analyze images containing arithmetic expressions and correctly identify each digit and symbol in the correct sequence. The solution was evaluated on the basis of Levenshtein distance for accuracy.
 
 ## Problem Statement
 The goal was to create a solution that can:
@@ -27,7 +27,7 @@ This repository contains the following files and folders:
    git clone https://github.com/imtiazx/Extracting-Arithmetic-Expression-using-YOLO.git
 2. Navigate to the repository folder:
    ```bash
-   cd your-repo-name
+   cd Extracting-Arithmetic-Expression-using-YOLO
 3. pip install -r requirements.txt
    ```bash
    pip install -r requirements.txt
